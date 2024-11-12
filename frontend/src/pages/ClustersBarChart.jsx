@@ -37,7 +37,7 @@ function ClustersBarChart({ clusters }) {
   }, []);
 
   return (
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="80%" height={400}>
         <h1 className="text-center text-2xl my-4 underline">Cluster-wise Sales and Record Distribution</h1>
         <BarChart data={clusterData}>
           <CartesianGrid strokeDasharray="3 3" />
