@@ -1,26 +1,39 @@
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar'; // Import the Sidebar component
 import Upload from './pages/Upload';
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Home from './pages/Home';
 import About from './pages/About';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Dashboard from './pages/Dashboard';
 
 function App() {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false); // Sidebar toggle state
+
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
+      <div className="flex min-h-screen bg-gray-100">
         <ToastContainer />
-        {/* Navbar */}
-        <Navbar />
+        
+        {/* Sidebar */}
+        <Sidebar isCollapsed={isSidebarCollapsed} toggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)} />
 
-        {/* Routes */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/upload" element={<Upload />} />
-        </Routes>
+        <div className="flex-1">
+          {/* Navbar */}
+          {/* <Navbar /> */}
+
+          {/* Main Content with Routes */}
+          <div className="p-8">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/upload" element={<Upload />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+          </div>
+        </div>
       </div>
     </Router>
   );
