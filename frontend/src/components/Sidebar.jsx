@@ -8,20 +8,20 @@ import {
   FiGrid,
   FiBarChart2,
 } from "react-icons/fi"; // Import FiBarChart2 for Data Visualization icon
-import { Tooltip } from "react-tooltip";
+// import { Tooltip } from "react-tooltip";
 import PropTypes from "prop-types";
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   const menuItems = [
     { path: "/", icon: <FiHome />, label: "Home" },
-    { path: "/upload", icon: <FiUpload />, label: "Upload" },
-    { path: "/about", icon: <FiInfo />, label: "About" },
     { path: "/dashboard", icon: <FiGrid />, label: "Dashboard" },
+    { path: "/upload", icon: <FiUpload />, label: "Upload" },
     {
       path: "/data-visualization",
       icon: <FiBarChart2 />,
       label: "Data Visualization",
     }, // New Data Visualization link
+    { path: "/about", icon: <FiInfo />, label: "About" },
   ];
 
   return (
