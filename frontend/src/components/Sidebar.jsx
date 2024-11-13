@@ -1,21 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FiHome, FiUpload, FiInfo, FiChevronLeft, FiChevronRight, FiGrid, FiBarChart2 } from 'react-icons/fi'; // Import FiBarChart2 for Data Visualization icon
-import { Tooltip } from 'react-tooltip'; // Optional: For tooltips, you may need to install a tooltip library
+import { Link } from "react-router-dom";
+import {
+  FiHome,
+  FiUpload,
+  FiInfo,
+  FiChevronLeft,
+  FiChevronRight,
+  FiGrid,
+  FiBarChart2,
+} from "react-icons/fi"; // Import FiBarChart2 for Data Visualization icon
+import { Tooltip } from "react-tooltip";
+import PropTypes from "prop-types";
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   const menuItems = [
-    { path: '/', icon: <FiHome />, label: 'Home' },
-    { path: '/upload', icon: <FiUpload />, label: 'Upload' },
-    { path: '/about', icon: <FiInfo />, label: 'About' },
-    { path: '/dashboard', icon: <FiGrid />, label: 'Dashboard' },
-    { path: '/data-visualization', icon: <FiBarChart2 />, label: 'Data Visualization' } // New Data Visualization link
+    { path: "/", icon: <FiHome />, label: "Home" },
+    { path: "/upload", icon: <FiUpload />, label: "Upload" },
+    { path: "/about", icon: <FiInfo />, label: "About" },
+    { path: "/dashboard", icon: <FiGrid />, label: "Dashboard" },
+    {
+      path: "/data-visualization",
+      icon: <FiBarChart2 />,
+      label: "Data Visualization",
+    }, // New Data Visualization link
   ];
 
   return (
     <div
       className={`${
-        isCollapsed ? 'w-20' : 'w-64'
+        isCollapsed ? "w-20" : "w-64"
       } fixed top-0 left-0 h-screen bg-gray-800 text-white transition-width duration-300 flex flex-col`}
     >
       {/* Toggle Button */}
@@ -44,6 +56,11 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
       </div>
     </div>
   );
+};
+
+Sidebar.PropTypes = {
+  isCollapsed: PropTypes.bool.isRequired,
+  toggleSidebar: PropTypes.func.isRequired, // Function to toggle the sidebar state
 };
 
 export default Sidebar;

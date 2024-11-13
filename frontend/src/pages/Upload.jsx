@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
