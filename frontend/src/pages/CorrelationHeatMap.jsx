@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 ChartJS.register(CategoryScale, LinearScale, Tooltip, Legend, Title, MatrixController, MatrixElement);
 
-// Helper function to calculate correlation (simplified version)
 function calculateCorrelation(arrX, arrY) {
   const n = arrX.length;
   const sumX = arrX.reduce((acc, val) => acc + val, 0);
@@ -20,7 +19,6 @@ function calculateCorrelation(arrX, arrY) {
   return denominator ? numerator / denominator : 0;
 }
 
-// Function to process data and calculate correlations between variables
 function processData(data) {
   const variables = ["Quantity", "UnitPrice", "TotalPrice", "CustomerID", "Country"];
   const correlationMatrix = [];
@@ -48,16 +46,15 @@ function CorrelationHeatmap({ data }) {
       data: matrixData,
       backgroundColor: (context) => {
         const value = context.dataset.data[context.dataIndex].v;
-        if (value > 0) {
-          return `rgba(0, 128, 255, ${Math.abs(value)})`; // Blue for positive correlations
-        } else {
-          return `rgba(255, 99, 132, ${Math.abs(value)})`; // Red for negative correlations
-        }
+        const intensity = Math.abs(value);
+        return value > 0
+          ? `rgba(0, 128, 255, ${intensity})`   // Blue for positive correlations
+          : `rgba(255, 99, 132, ${intensity})`; // Red for negative correlations
       },
-      borderWidth: 1,
-      width: ({ chart }) => (chart.chartArea || {}).width / labels.length - 5,
-      height: ({ chart }) => (chart.chartArea || {}).height / labels.length - 5,
-      hoverBackgroundColor: 'rgba(255,99,132,0.8)',
+      borderWidth: 0.5,
+      width: ({ chart }) => (chart.chartArea || {}).width / labels.length - 10,
+      height: ({ chart }) => (chart.chartArea || {}).height / labels.length - 10,
+      hoverBackgroundColor: 'rgba(255, 99, 132, 0.8)',
     }],
   };
 
@@ -70,37 +67,61 @@ function CorrelationHeatmap({ data }) {
         labels: labels,
         title: {
           display: true,
-          text: 'Variables'
-        }
+          text: 'Variables',
+          color: '#ffffff',
+          font: { size: 14, weight: 'bold' }
+        },
+        ticks: {
+          color: '#ffffff',
+        },
+        grid: { display: false }
       },
       y: {
         type: 'category',
         labels: labels,
         title: {
           display: true,
-          text: 'Variables'
-        }
+          text: 'Variables',
+          color: '#ffffff',
+          font: { size: 14, weight: 'bold' }
+        },
+        ticks: {
+          color: '#ffffff',
+        },
+        grid: { display: false }
       },
     },
     plugins: {
       tooltip: {
         callbacks: {
           label: function (context) {
-            return `Correlation: ${context.raw.v.toFixed(2)}`;
+            const { x, y, v } = context.raw;
+            return `${labels[x]} vs ${labels[y]}: ${v.toFixed(2)}`;
           }
         }
       },
       legend: {
         display: true,
         position: 'top',
+        labels: {
+          color: '#ffffff'
+        }
+      },
+      title: {
+        display: true,
+        text: 'Correlation Matrix',
+        color: '#ffffff',
+        font: { size: 18, weight: 'bold' }
       },
     },
   };
 
   return (
-    <div style={{ width: '100%', height: '500px', margin: 'auto' }}>
-      <h2 className="text-center text-xl my-4 underline">Correlation Matrix</h2>
+    <div style={{ width: '100%', height: '500px', margin: 'auto', backgroundColor: '#2d2d2d', padding: '20px', borderRadius: '8px' }}>
       <Chart type="matrix" data={chartData} options={options} />
+      <div style={{ color: '#ffffff', marginTop: '10px', textAlign: 'center' }}>
+        <p><strong>Legend:</strong> Blue = Positive Correlation, Red = Negative Correlation</p>
+      </div>
     </div>
   );
 }

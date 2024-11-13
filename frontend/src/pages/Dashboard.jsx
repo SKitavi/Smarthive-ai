@@ -2,9 +2,7 @@
 
 import  { useEffect, useState } from 'react';
 
-
-// Mock URL for fetching JSON data
-const dataUrl = 'http://localhost:5000/api/clusters';  // Replace with your actual data URL if needed
+const dataUrl = 'http://localhost:5000/api/clusters'; 
 
 const Dashboard = () => {
   const [data, setData] = useState([]);

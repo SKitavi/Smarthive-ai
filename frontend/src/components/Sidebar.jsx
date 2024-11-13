@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiHome, FiUpload, FiInfo, FiChevronLeft, FiChevronRight, FiGrid } from 'react-icons/fi'; // Import icons
+import { FiHome, FiUpload, FiInfo, FiChevronLeft, FiChevronRight, FiGrid, FiBarChart2 } from 'react-icons/fi'; // Import FiBarChart2 for Data Visualization icon
 import { Tooltip } from 'react-tooltip'; // Optional: For tooltips, you may need to install a tooltip library
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
@@ -8,11 +8,16 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
     { path: '/', icon: <FiHome />, label: 'Home' },
     { path: '/upload', icon: <FiUpload />, label: 'Upload' },
     { path: '/about', icon: <FiInfo />, label: 'About' },
-    { path: '/dashboard', icon: <FiGrid />, label: 'Dashboard' }
+    { path: '/dashboard', icon: <FiGrid />, label: 'Dashboard' },
+    { path: '/data-visualization', icon: <FiBarChart2 />, label: 'Data Visualization' } // New Data Visualization link
   ];
 
   return (
-    <div className={`flex flex-col ${isCollapsed ? 'w-20' : 'w-64'} h-screen bg-gray-800 text-white transition-width duration-300`}>
+    <div
+      className={`${
+        isCollapsed ? 'w-20' : 'w-64'
+      } fixed top-0 left-0 h-screen bg-gray-800 text-white transition-width duration-300 flex flex-col`}
+    >
       {/* Toggle Button */}
       <div className="flex justify-end p-4">
         <button
