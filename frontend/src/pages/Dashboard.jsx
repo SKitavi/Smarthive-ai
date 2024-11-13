@@ -9,7 +9,6 @@ const Dashboard = () => {
   const [totalRevenue, setTotalRevenue] = useState(0);
   const [totalInvoices, setTotalInvoices] = useState(0);
   const [averageQuantity, setAverageQuantity] = useState(0);
-  // const {isLoading} = useFetch()
 
   useEffect(() => {
     // Fetch data from JSON file

@@ -1,6 +1,5 @@
 import  { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar'; // Import the Sidebar component
 import Upload from './pages/Upload';
 import Home from './pages/Home';
