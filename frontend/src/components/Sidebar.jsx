@@ -6,7 +6,7 @@ import {
   FiChevronLeft,
   FiChevronRight,
   FiGrid,
-  FiBarChart2,
+  // FiBarChart2,
 } from "react-icons/fi";
 import PropTypes from "prop-types";
 import logo from '../assets/logo.png'; // Adjust the path to your logo file
@@ -31,12 +31,12 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
       } fixed top-0 left-0 h-screen bg-gray-800 text-white transition-width duration-300 flex flex-col`}
     >
       {/* Logo and System Name */}
-      <div className="flex items-center justify-center p-4">
+      <div className="flex items-center justify-center">
         <img
           src={logo}
           alt="SmartHive AI Logo"
           className={`${
-            isCollapsed ? "w-12 h-10" : "w-28 h-24"
+            isCollapsed ? "w-28 h-20" : "w-32 h-26"
           } mr-2`} // Adjust size based on sidebar state
         />
         {/* {!isCollapsed && (

@@ -87,11 +87,13 @@ const Upload = () => {
         <div className="mb-4">
           <p className="text-gray-700">Selected file: {selectedFile.name}</p>
           <button
+          disabled={isLoading}
             className="mt-2 bg-blue-500 text-white py-2 px-4 rounded"
             onClick={handleUpload}
           >
             {uploadProgress === 100? "Predicting...": "Upload"}
           </button>
+            {uploadProgress === 100 && <p className="text-green-500">Uploading large files can take a while.Please be patient...</p>}
         </div>
       )}
 

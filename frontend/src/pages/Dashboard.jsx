@@ -62,6 +62,7 @@ const Dashboard = () => {
         <table className="min-w-full bg-white border border-gray-200">
           <thead>
             <tr>
+              <th className="px-4 py-2 border">Cluster</th>
               <th className="px-4 py-2 border">Invoice No</th>
               <th className="px-4 py-2 border">Stock Code</th>
               <th className="px-4 py-2 border">Quantity</th>
@@ -75,6 +76,7 @@ const Dashboard = () => {
           <tbody>
             {data?.map((invoice, index) => (
               <tr key={index} className="hover:bg-gray-100">
+                <td className="px-4 py-2 border">{invoice.Cluster}</td>
                 <td className="px-4 py-2 border">{invoice.InvoiceNo}</td>
                 <td className="px-4 py-2 border">{invoice.StockCode}</td>
                 <td className="px-4 py-2 border">{invoice.Quantity}</td>

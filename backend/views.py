@@ -22,6 +22,8 @@ def hierarchical():
         
         # Read the Excel file into a DataFrame
         df = pd.read_excel(file)
+        df = df[:101]
+        print("shape",df.shape)
         
         df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'])
 
@@ -46,7 +48,9 @@ def hierarchical():
 
         # Step 3: If required, encode categorical columns (like 'Country')
         # Example: Label encode the 'Country' column (ensure same encoding as used in training)
-        df_test['Country'] = df_test['Country'].astype('category').cat.codes
+        df_test['Country'] = df_test['Country'].astype('category')
+        country_map = dict(enumerate(df_test['Country'].cat.categories))  # Create a mapping dictionary
+        df_test['Country'] = df_test['Country'].cat.codes
 
         # Step 4: Create any missing features (like 'TotalPrice')
         df_test['TotalPrice'] = df_test['Quantity'] * df_test['UnitPrice']
@@ -60,7 +64,7 @@ def hierarchical():
         print(model_path)
         model = joblib.load(model_path)
         
-        cluster_labels = model.fit_predict(df_test[:51])
+        cluster_labels = model.fit_predict(df_test)
         
         # Add the cluster labels to the dataframe for reference
         df_test['Cluster'] = cluster_labels
@@ -83,6 +87,7 @@ def hierarchical():
         # Map dayofweek (0 = Monday, 6 = Sunday) to actual day names
         day_of_week_map = {0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'}
         df_test['InvoiceDayOfWeek'] = df_test['InvoiceDayOfWeek'].map(day_of_week_map)
+        df_test['Country'] = df_test['Country'].map(country_map)
         
         # Convert the DataFrame to a dictionary to send as a JSON response
         result = df_test.to_dict(orient='records')
