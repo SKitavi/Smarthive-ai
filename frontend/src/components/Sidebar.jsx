@@ -8,7 +8,6 @@ import {
   FiGrid,
   FiBarChart2,
 } from "react-icons/fi"; // Import FiBarChart2 for Data Visualization icon
-// import { Tooltip } from "react-tooltip";
 import PropTypes from "prop-types";
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
@@ -30,6 +29,15 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         isCollapsed ? "w-20" : "w-64"
       } fixed top-0 left-0 h-screen bg-gray-800 text-white transition-width duration-300 flex flex-col`}
     >
+      {/* System Name */}
+      <div className="flex items-center justify-center p-4">
+        {!isCollapsed ? (
+          <h1 className="text-xl font-semibold text-center">SmartHive AI</h1>
+        ) : (
+          <div className="text-xl font-semibold text-center">S</div>
+        )}
+      </div>
+
       {/* Toggle Button */}
       <div className="flex justify-end p-4">
         <button
@@ -58,7 +66,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   );
 };
 
-Sidebar.PropTypes = {
+Sidebar.propTypes = {
   isCollapsed: PropTypes.bool.isRequired,
   toggleSidebar: PropTypes.func.isRequired, // Function to toggle the sidebar state
 };

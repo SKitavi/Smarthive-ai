@@ -34,10 +34,6 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  console.log('====================================');
-  console.log(data);
-  console.log('====================================');
-
   return (
     <div className="p-4 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>

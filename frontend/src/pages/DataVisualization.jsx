@@ -165,13 +165,10 @@ function DataVisualizationPage() {
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Charts</h1>
       <div className="w-full max-w-6xl grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
         
-        {/* Clusters Chart */}
         <ClustersBarChart clusters={clusters} />
         
-        {/* Country-wise Chart */}
         <CountryBarChart data={clusters} />
         
-        {/* Placeholder for Correlation Heatmap */}
         <div className="bg-white shadow rounded-lg p-6">
           <h2 className="text-lg font-semibold text-gray-800 mb-4 text-center underline">Correlation Heatmap</h2>
           <p className="text-center text-gray-600"><CorrelationHeatmap data={clusters} /></p>
