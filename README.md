@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/ManNjoro/smarthive
+git clone https://github.com/SKitavi/Smarthive-ai
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ cd backend
 cd frontend
 ```
 
-**NB: For the file upload use `retail.xlsx` for testing**
+**NB: For the file upload use `retail.xlsx` or `test*.xlsx` for testing**
 
 ## Overview
 
