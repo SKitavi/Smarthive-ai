@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar'; // Import the Sidebar component
 import Upload from './pages/Upload';
 import Home from './pages/Home';
 import About from './pages/About';
-import DataVisualization from './pages/DataVisualization';
+// import DataVisualization from './pages/DataVisualization';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Dashboard from './pages/Dashboard';
@@ -31,7 +31,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/upload" element={<Upload />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/data-visualization" element={<DataVisualization />} />
+              {/* <Route path="/data-visualization" element={<DataVisualization />} /> */}
             </Routes>
           </div>
         </div>

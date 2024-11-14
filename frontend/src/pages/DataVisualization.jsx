@@ -132,36 +132,8 @@ function DataVisualizationPage() {
       useEffect(() => { fetchClusters(); }, []);
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Table Form</h1>
         {/* Table component */}
-      <div className="w-full max-w-6xl mb-6 overflow-x-auto shadow rounded-lg">
-        <table className="min-w-full bg-white border border-gray-200 rounded-lg">
-          <thead>
-            <tr className="bg-gray-200 text-gray-700 text-sm leading-normal">
-              {["Cluster", "Country", "Customer ID", "Date", "Time", "Day of Week", "Invoice No", "Quantity", "Stock Code", "Total Price", "Unit Price"].map((header) => (
-                <th key={header} className="py-3 px-4 text-center">{header}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {clusters.map((cluster, index) => (
-              <tr key={index} className="text-sm text-gray-700 text-center border-t hover:bg-gray-100">
-                <td className="py-3 px-4">{cluster.Cluster}</td>
-                <td className="py-3 px-4 truncate">{cluster.Country}</td>
-                <td className="py-3 px-4">{cluster.CustomerID}</td>
-                <td className="py-3 px-4">{new Date(cluster.InvoiceDate).toLocaleDateString()}</td>
-                <td className="py-3 px-4">{cluster.InvoiceTime}</td>
-                <td className="py-3 px-4">{cluster.InvoiceDayOfWeek}</td>
-                <td className="py-3 px-4">{cluster.InvoiceNo}</td>
-                <td className="py-3 px-4">{cluster.Quantity}</td>
-                <td className="py-3 px-4">{cluster.StockCode}</td>
-                <td className="py-3 px-4">{cluster.TotalPrice}</td>
-                <td className="py-3 px-4">{cluster.UnitPrice}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      
       <h1 className="text-3xl font-bold text-gray-800 mb-8">Charts</h1>
       <div className="w-full max-w-6xl grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
         

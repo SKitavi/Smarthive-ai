@@ -39,6 +39,10 @@ def hierarchical():
         # Step 2: Ensure numeric columns are in the correct format
         df_test['Quantity'] = pd.to_numeric(df_test['Quantity'], errors='coerce')
         df_test['UnitPrice'] = pd.to_numeric(df_test['UnitPrice'], errors='coerce')
+        df_test['StockCode'] = pd.to_numeric(df_test['StockCode'], errors='coerce')
+        df_test.dropna(inplace=True)
+
+
 
         # Step 3: If required, encode categorical columns (like 'Country')
         # Example: Label encode the 'Country' column (ensure same encoding as used in training)
@@ -56,7 +60,7 @@ def hierarchical():
         print(model_path)
         model = joblib.load(model_path)
         
-        cluster_labels = model.fit_predict(df_test)
+        cluster_labels = model.fit_predict(df_test[:51])
         
         # Add the cluster labels to the dataframe for reference
         df_test['Cluster'] = cluster_labels
@@ -88,6 +92,7 @@ def hierarchical():
         return jsonify({"message": "File uploaded and processed successfully!"})
     
     except Exception as e:
+        print(e)
         return jsonify({'error': str(e)}), 500
 
 @views.route('/kmeans', methods=['POST'])

@@ -1,6 +1,7 @@
 // pages/Dashboard.js
 
 import  { useEffect, useState } from 'react';
+import DataVisualizationPage from './DataVisualization';
 
 const dataUrl = 'http://localhost:5000/api/clusters'; 
 
@@ -35,6 +36,8 @@ const Dashboard = () => {
   }, []);
 
   return (
+    <>
+   
     <div className="p-4 bg-white rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       
@@ -70,8 +73,8 @@ const Dashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((invoice) => (
-              <tr key={invoice.InvoiceNo} className="hover:bg-gray-100">
+            {data?.map((invoice, index) => (
+              <tr key={index} className="hover:bg-gray-100">
                 <td className="px-4 py-2 border">{invoice.InvoiceNo}</td>
                 <td className="px-4 py-2 border">{invoice.StockCode}</td>
                 <td className="px-4 py-2 border">{invoice.Quantity}</td>
@@ -86,6 +89,8 @@ const Dashboard = () => {
         </table>
       </div>
     </div>
+    <DataVisualizationPage />
+    </>
   );
 };
 

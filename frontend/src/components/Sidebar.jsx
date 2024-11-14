@@ -7,19 +7,20 @@ import {
   FiChevronRight,
   FiGrid,
   FiBarChart2,
-} from "react-icons/fi"; // Import FiBarChart2 for Data Visualization icon
+} from "react-icons/fi";
 import PropTypes from "prop-types";
+import logo from '../assets/logo.png'; // Adjust the path to your logo file
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   const menuItems = [
     { path: "/", icon: <FiHome />, label: "Home" },
     { path: "/dashboard", icon: <FiGrid />, label: "Dashboard" },
     { path: "/upload", icon: <FiUpload />, label: "Upload" },
-    {
-      path: "/data-visualization",
-      icon: <FiBarChart2 />,
-      label: "Data Visualization",
-    }, // New Data Visualization link
+    // {
+    //   path: "/data-visualization",
+    //   icon: <FiBarChart2 />,
+    //   label: "Data Visualization",
+    // },
     { path: "/about", icon: <FiInfo />, label: "About" },
   ];
 
@@ -29,13 +30,18 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         isCollapsed ? "w-20" : "w-64"
       } fixed top-0 left-0 h-screen bg-gray-800 text-white transition-width duration-300 flex flex-col`}
     >
-      {/* System Name */}
+      {/* Logo and System Name */}
       <div className="flex items-center justify-center p-4">
-        {!isCollapsed ? (
+        <img
+          src={logo}
+          alt="SmartHive AI Logo"
+          className={`${
+            isCollapsed ? "w-12 h-10" : "w-28 h-24"
+          } mr-2`} // Adjust size based on sidebar state
+        />
+        {/* {!isCollapsed && (
           <h1 className="text-xl font-semibold text-center">SmartHive AI</h1>
-        ) : (
-          <div className="text-xl font-semibold text-center">S</div>
-        )}
+        )} */}
       </div>
 
       {/* Toggle Button */}

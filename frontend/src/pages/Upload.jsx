@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [isLoading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleFileChange = (event) => {
@@ -33,6 +34,7 @@ const Upload = () => {
     formData.append("file", selectedFile);
 
     try {
+      setLoading(true)
       const response = await axios.post("http://localhost:5000/api/hierarchical", formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         onUploadProgress: (progressEvent) => {
@@ -45,12 +47,14 @@ const Upload = () => {
         toast.success("File uploaded successfully");
         setSelectedFile(null);
         setUploadProgress(0);
-        navigate('/data-visualization')
+        navigate('/dashboard')
       }
     } catch (error) {
       console.error("Upload error:", error);
       toast.error("Failed to upload file");
       setUploadProgress(0);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -86,7 +90,7 @@ const Upload = () => {
             className="mt-2 bg-blue-500 text-white py-2 px-4 rounded"
             onClick={handleUpload}
           >
-            Upload
+            {uploadProgress === 100? "Predicting...": "Upload"}
           </button>
         </div>
       )}
