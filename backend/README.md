@@ -3,7 +3,7 @@
 ## Create a virtual environment
 
 ```bash
-python -m venv (name of your virtualenv)
+python -m venv (name of your virtualenv e.g venv)
 ```
 
 ## Activate the virtual environment
@@ -19,6 +19,8 @@ venv/Scripts/activate
 ```bash
 source venv/bin/activate
 ```
+
+**NB: If you decide to use a different name for the virtual environment, remember to replace venv with your preferred name `e.g: (name of your virtualenv)/Scripts/activate`**
 
 ## Install the required dependencies
 
